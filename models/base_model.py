@@ -33,6 +33,7 @@ class BaseModel:
                                                      '%Y-%m-%dT%H:%M:%S.%f')
             del kwargs['__class__']
             self.__dict__.update(kwargs)
+        storage.new(self)
 
     def __str__(self):
         """Returns a string representation of the instance"""
@@ -54,7 +55,7 @@ class BaseModel:
                           (str(type(self)).split('.')[-1]).split('\'')[0]})
         dictionary['created_at'] = self.created_at.isoformat()
         dictionary['updated_at'] = self.updated_at.isoformat()
-        if dictionary['_sa_instance_state']:
+        if '_sa_instance_state' in dictionary.keys():
             del dictionary['_sa_instance_state']
         return dictionary
 

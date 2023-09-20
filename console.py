@@ -130,7 +130,6 @@ class HBNBCommand(cmd.Cmd):
         new_instance = HBNBCommand.classes[cmd_list[0]](**cmd_args)
         storage.save()
         print(new_instance.id)
-        storage.save()
 
     def help_create(self):
         """ Help information for the create method """
@@ -342,7 +341,6 @@ class HBNBCommand(cmd.Cmd):
 
     @staticmethod
     def sanitize_inpt(args):
-        print(args)
         if args[0] == '"':
             args = args.replace('"', '')
             args = args.replace('_', ' ')
@@ -350,7 +348,6 @@ class HBNBCommand(cmd.Cmd):
             args = float(args)
         else:
             args = int(args)
-        print(args)
         return args
 
 
