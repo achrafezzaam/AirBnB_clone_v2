@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+'''  Create an archive and it distribute it to the web servers '''
 import os
 from datetime import datetime
 from fabric.api import env, local, put, run, runs_once
@@ -22,6 +23,7 @@ def do_pack():
 
 
 def do_deploy(archive_path):
+    ''' Distribute the archive to the webservers '''
     if not os.path.exists(archive_path):
         return False
     file = os.path.basename(archive_path)
