@@ -10,8 +10,8 @@ def do_pack():
     ''' Create a .tgz from the content of the web_static folder '''
     local("mkdir -p versions")
     filepath = ("versions/web_static_{}.tgz"
-            .format(datetime.strftime(datetime.now(), "%Y%m%d%H%M%S")))
-    check_file = local("tar -cvzf {} web_static".format(path))
+                .format(datetime.strftime(datetime.now(), "%Y%m%d%H%M%S")))
+    check_file = local("tar -cvzf {} web_static".format(filepath))
 
     if check_file.failed:
         return None
