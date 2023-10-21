@@ -60,3 +60,7 @@ class FileStorage:
         """ Remove obj from class attribute __objects"""
         if obj is not None:
             del self.all()[obj.__class__.__name__ + "." + obj.id]
+
+    def close(self):
+        ''' Deserialize the JSON file to objects '''
+        self.reload()
