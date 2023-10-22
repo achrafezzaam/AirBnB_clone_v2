@@ -4,7 +4,6 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
 from models import storage_type
-from models.city import City
 
 
 class State(BaseModel, Base):
@@ -17,12 +16,13 @@ class State(BaseModel, Base):
     else:
         name = ''
 
-        @propety
+        @property
         def cities(self):
+            from models.city import City
             from models import storage
             linked_cities = []
             cities = storage.all(City)
             for city in cities.values():
-                if city.state_id = self.id:
-                    linked_cities.appen(city)
+                if city.state_id == self.id:
+                    linked_cities.append(city)
             return linked_cities
